@@ -4,12 +4,15 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "build": "tsc",
-    "dev": "ts-node ./api/server.ts",
-    "start": "node ./dist/api/server.js",
+    "build": "tsc -p src/api && tsc -p src/cli && tsc -p spec",
+    "build-api": "tsc -p src/api",
+    "api-dev": "ts-node ./src/api/server.ts",
+    "api-prod": "node ./dist/src/api/server.js",
     "prod": "npm run build && npm start",
-    "watch": "tsc --watch",
-    "test": "node_modules/nodemon/bin/nodemon.js -w dist ./node_modules/.bin/jasmine —config=spec/support/jasmine.json"
+    "api-watch": "tsc -p src/api --watch",
+    "test": "node_modules/nodemon/bin/nodemon.js -w dist ./node_modules/.bin/jasmine JASMINE_CONFIG_PATH=spec/support/jasmine.json",
+    "test-api": "node_modules/nodemon/bin/nodemon.js -w dist/api ./node_modules/.bin/jasmine JASMINE_CONFIG_PATH=spec/support/jasmine.api.json",
+    "test-cli": "node_modules/nodemon/bin/nodemon.js -w dist/cli ./node_modules/.bin/jasmine JASMINE_CONFIG_PATH=spec/support/jasmine.cli.json"
   },
   "dependencies": {
     "@types/express": "^4.11.1",
