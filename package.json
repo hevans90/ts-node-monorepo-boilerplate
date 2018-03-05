@@ -5,8 +5,8 @@
   "license": "MIT",
   "scripts": {
     "build": "tsc",
-    "dev": "ts-node ./src/server.ts",
-    "start": "node ./dist/server.js",
+    "dev": "ts-node ./api/server.ts",
+    "start": "node ./dist/api/server.js",
     "prod": "npm run build && npm start",
     "watch": "tsc --watch",
     "test": "node_modules/nodemon/bin/nodemon.js -w dist ./node_modules/.bin/jasmine —config=spec/support/jasmine.json"
